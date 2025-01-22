@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<style>
+    th {
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+    }
+
+    /* Table Row Styles */
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #d1e7dd;
+    }
+
+    /* Button Styles */
+    .btn-warning {
+        background-color: #ffc107;
+        border: none;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border: none;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поздравлятор - Редактировать день рождения</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Редактирование записи</h1>
+    <div th:each="el : ${user}">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="fio">Фамилия Имя Отчество</label>
+                <input type="text" th:value="${el.fio}" class="form-control" id="fio" name="fio" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Дата рождения</label>
+                <input type="date" th:value="${el.date}" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="photo">Фотография</label>
+                <input type="file" th:value="${el.photo}" class="form-control-file" id="photo" name="photo">
+            </div>
+            <button type="submit" class="btn btn-primary">Обновить</button>
+            <a href="/home" class="btn btn-secondary">Ближайшие дни рождения</a>
+            <a href="/all" class="btn btn-secondary">Все дни рождения</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>
